@@ -386,4 +386,4 @@ if __name__ == '__main__':
     # img_index = 0
     # query_image = img_root + '/streetview/' + str(img_index) + '.jpg'
     # test_query(query_image)
-    train()
+    test()
