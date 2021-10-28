@@ -10,8 +10,8 @@ class InputData:
 
     def __init__(self):
 
-        self.train_list = self.img_root + 'splits/train-myzl.csv'
-        self.test_list = self.img_root + 'splits/val-myzl.csv'
+        self.train_list = self.img_root + 'splits/train_shijian.csv'
+        self.test_list = self.img_root + 'splits/val_shijian.csv'
 
         print('InputData::__init__: load %s' % self.train_list)
         self.__cur_id = 0  # for training
@@ -56,9 +56,6 @@ class InputData:
         elif self.__cur_test_id + batch_size >= self.test_data_size:
             batch_size = self.test_data_size - self.__cur_test_id
 
-        """
-        这里都是0...问题是在这吗
-        """
         batch_grd = np.zeros([batch_size, 512, 512, 3], dtype = np.float32)
         batch_sat = np.zeros([batch_size, 512, 512, 3], dtype=np.float32)
         for i in range(batch_size):

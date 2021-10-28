@@ -8,6 +8,7 @@ import tensorflow.contrib.slim as slim
 import cv2
 from operator import itemgetter
 
+import time
 
 
 # --------------  configuration parameters  -------------- #
@@ -195,6 +196,7 @@ def train(start_epoch=1):
 
 def test():
     input_data = InputData()
+    start_time = time.perf_counter()
     print("test_model")
     tf.compat.v1.disable_eager_execution()
     sat_x = tf.compat.v1.placeholder(tf.float32, [None, 512, 512, 3], name='sat_x')
@@ -264,6 +266,8 @@ def test():
         print('compute accuracy')
         val_accuracy = validate(grd_global_descriptor, sat_global_descriptor)
         print(' accuracy = %.1f%%' % (val_accuracy * 100.0))
+        end_time = time.perf_counter()
+        print("final is in : %s Seconds " % (end_time-start_time))
 
 
 def test_query(query_image):
